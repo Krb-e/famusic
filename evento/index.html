@@ -506,7 +506,7 @@ function headFor(a,b){
     fact,ord,factSrc,ticket:ord?fact/ord:0,ses,usr,atc,cvr:sesF?ord/sesF*100:0,
     invMeta,factMeta,cpaMeta:compMeta?invMeta/compMeta:0,acosMeta:factMeta?invMeta/factMeta*100:0,
     cpmMeta:imprMeta?invMeta/imprMeta*1000:0,ctrM:ctrMw,freqM:freqMw,compMeta,imprMeta,lpvMeta,
-    hookM:imprMeta?v3/imprMeta*100:0,cvM:lpvMeta?invMeta/lpvMeta:0,crM:lpvMeta?compMeta/lpvMeta*100:0,
+    hookM:imprMeta?v3/imprMeta*100:0,v3Ok:mt.some(x=>x.video_view_3s!=null),cvM:lpvMeta?invMeta/lpvMeta:0,crM:lpvMeta?compMeta/lpvMeta*100:0,
     invGoogle,factGoogle,ordGoogle,cpaGoogle:ordGoogle?invGoogle/ordGoogle:0,acosGoogle:factGoogle?invGoogle/factGoogle*100:0,
     cpcGoogle:gCl?invGoogle/gCl:0,imprG,ctrG:ctrGw,isG:isGw,
     inv:invMeta+invGoogle,acos:fact?(invMeta+invGoogle)/fact*100:0,
@@ -683,7 +683,7 @@ function paTab(D){
   const h=D;
   const objAll=state.day==='all';
   const mt=[['Monto invertido',M(h.invMeta)],['Costo por compra',M(h.cpaMeta)],['Facturación (atrib.)',M(h.factMeta)],['ACOS Meta',pc(h.acosMeta)],['CPM',M(h.cpmMeta)]];
-  const mt2=[['CTR',pc(h.ctrM,2)],['Hook rate',pc(h.hookM)],['Frecuencia',nf(h.freqM,1)],['Costo/visita',M(h.cvM)],['CR (conv.)',pc(h.crM,2)]];
+  const mt2=[['CTR',pc(h.ctrM,2)],['Hook rate',h.v3Ok?pc(h.hookM):'—'],['Frecuencia',nf(h.freqM,1)],['Costo/visita',M(h.cvM)],['CR (conv.)',pc(h.crM,2)]];
   const gg=[['Monto invertido',M(h.invGoogle)],['Costo por compra',h.ordGoogle?M(h.cpaGoogle):'—'],['Facturación (atrib.)',h.factGoogle?M(h.factGoogle):'—'],['ACOS Google',h.factGoogle?pc(h.acosGoogle):'—'],['CPC',M(h.cpcGoogle)]];
   const gg2=[['Impresiones',nf(h.imprG)],['CTR',pc(h.ctrG,2)],['Impression share',h.isG?pc(h.isG,0):'—']];
   // ADS: por campaña (agrupadas)
